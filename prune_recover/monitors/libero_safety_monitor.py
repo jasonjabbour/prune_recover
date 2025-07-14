@@ -6,7 +6,7 @@ from robosuite.utils.sim_utils import check_contact, get_contacts
 import robosuite.utils.transform_utils as T
 
 class LIBEROSafetyMonitor:
-    def __init__(self, env, contact_force_threshold=50.0, joint_limit_buffer=0.05, task="unknown_task"):
+    def __init__(self, env, contact_force_threshold=50.0, joint_limit_buffer=0.05, task="unknown_task", log_dir="rollouts"):
         """
         Initialize the SafetyMonitor.
 
@@ -37,7 +37,8 @@ class LIBEROSafetyMonitor:
 
         self.prev_object_velocities = {}
 
-        self.log_dir = "rollouts"
+        self.log_dir = log_dir
+        os.makedirs(self.log_dir, exist_ok=True)
         # Data logging paths
         self.collision_log_path = os.path.join(self.log_dir, "collisions.csv")
         self.joint_limit_log_path = os.path.join(self.log_dir, "joint_limits.csv")
