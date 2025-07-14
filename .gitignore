@@ -1,0 +1,10 @@
+# Byte‐compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Editable install metadata
+prune_recover.egg-info/
+
+# Virtual environment
+.venv/
